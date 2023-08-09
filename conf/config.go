@@ -40,7 +40,7 @@ func Load() (*Config, error) {
 	return c, err
 }
 
-// get setting file (application.toml) path toml）のパスを取得
+// get setting file (application.toml)
 func getConfPath() string {
 	exe, err := os.Executable()
 	if err != nil {

@@ -26,7 +26,7 @@ const (
 )
 
 
-// 共通文言
+// common message
 const (
 	//insert
 	InsertSuccess       = "Successfully insert data in %v"
