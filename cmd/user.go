@@ -138,38 +138,27 @@ func (d UserData) Build() *cobra.Command {
 			4. DELETE ALL:
 			bookCmd book --mode deleteall --table account_user`,
 		Run: func(cmd *cobra.Command, args []string) {
-
-			var crudFunc func(*user.AccountUser)
-
 			switch mode {
 			case definitions.Insert:
 				color.Blue("INSERT")
 				p.AccountName = accountName
 				p.MailAddress = mailAddress
-				crudFunc = d.Insert
-				crudFunc(p)
-
+				d.Insert(p)
 			case definitions.Update:
 				color.Blue("UPDATE")
 				p.AccountID = accountID
 				p.AccountName = accountName
 				p.MailAddress = mailAddress
-				crudFunc = d.update
-				crudFunc(p)
-
+				d.update(p)
 			case definitions.Delete:
 				color.Blue("DELETE")
 				p.AccountID = accountID
 				p.Title = title
-				crudFunc = d.Delete
-				crudFunc(p)
-
+				d.Delete(p)
 			case definitions.DeleteAll:
 				color.Blue("DELETE ALL")
 				p.AccountID = accountID
-				crudFunc = d.DeleteAll
-				crudFunc()
-
+				d.DeleteAll()
 			default:
 				color.Blue("default")
 			}
