@@ -117,7 +117,7 @@ func (d UserData) DeleteAll() {
 		color.Red(definitions.TransactionErrorFormat, "delete all in account_user", err)
 		return
 	}
-	color.Green(definitions.DeleteAllSuccess, definitions.AccountUser)
+	color.Green("Successfully delete all data in DB")
 }
 
 func (d UserData) Build() *cobra.Command {
@@ -140,23 +140,27 @@ func (d UserData) Build() *cobra.Command {
 		Run: func(cmd *cobra.Command, args []string) {
 			switch mode {
 			case definitions.Insert:
-				color.Blue("INSERT")
+				color.Blue("insert mode")
+				color.Yellow("table: account_user")
 				p.AccountName = accountName
 				p.MailAddress = mailAddress
 				d.Insert(p)
 			case definitions.Update:
-				color.Blue("UPDATE")
+				color.Blue("update mode")
+				color.Yellow("table: account_user")
 				p.AccountID = accountID
 				p.AccountName = accountName
 				p.MailAddress = mailAddress
 				d.update(p)
 			case definitions.Delete:
-				color.Blue("DELETE")
+				color.Blue("delete mode")
+				color.Yellow("table: account_user")
 				p.AccountID = accountID
 				p.Title = title
 				d.Delete(p)
 			case definitions.DeleteAll:
-				color.Blue("DELETE ALL")
+				color.Blue("delete all mode")
+				color.Yellow("table: all in account_user")
 				p.AccountID = accountID
 				d.DeleteAll()
 			default:
