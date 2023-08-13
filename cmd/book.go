@@ -142,6 +142,7 @@ func (d BookData) Build() *cobra.Command {
 			switch mode {
 			case definitions.Insert:
 				color.Blue("insert mode")
+				color.Yellow("table: book")
 				p.AccountID = accountID
 				p.Title = title
 				p.Author = author
@@ -150,6 +151,7 @@ func (d BookData) Build() *cobra.Command {
 				d.Insert(p)
 			case definitions.Update:
 				color.Blue("update mode")
+				color.Yellow("table: book")
 				p.AccountID = accountID
 				p.Title = title
 				p.Author = author
@@ -158,12 +160,13 @@ func (d BookData) Build() *cobra.Command {
 				d.update(p)
 			case definitions.Delete:
 				color.Blue("delete mode")
+				color.Yellow("table: book")
 				p.AccountID = accountID
 				p.Title = title
 				d.Delete(p)
 			case definitions.DeleteAll:
 				color.Blue("delete all mode")
-				color.Yellow("table: all in book ")
+				color.Yellow("table: all in book")
 				p.AccountID = accountID
 				d.DeleteAll()
 			default:
