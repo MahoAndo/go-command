@@ -118,7 +118,7 @@ func (d BookData) DeleteAll(b *book.Book) {
 		color.Red(definitions.TransactionErrorFormat, "delete all in book", err)
 		return
 	}
-	color.Green(definitions.DeleteAllSuccess, definitions.Book)
+	color.Green("Successfully delete all data in DB")
 }
 
 func (d BookData) Build() *cobra.Command {
@@ -141,7 +141,7 @@ func (d BookData) Build() *cobra.Command {
 		Run: func(cmd *cobra.Command, args []string) {
 			switch mode {
 			case definitions.Insert:
-				color.Blue("INSERT")
+				color.Blue("insert mode")
 				p.AccountID = accountID
 				p.Title = title
 				p.Author = author
@@ -149,7 +149,7 @@ func (d BookData) Build() *cobra.Command {
 				p.Note = note
 				d.Insert(p)
 			case definitions.Update:
-				color.Blue("UPDATE")
+				color.Blue("update mode")
 				p.AccountID = accountID
 				p.Title = title
 				p.Author = author
@@ -157,12 +157,13 @@ func (d BookData) Build() *cobra.Command {
 				p.Note = note
 				d.update(p)
 			case definitions.Delete:
-				color.Blue("DELETE")
+				color.Blue("delete mode")
 				p.AccountID = accountID
 				p.Title = title
 				d.Delete(p)
 			case definitions.DeleteAll:
-				color.Blue("DELETE ALL")
+				color.Blue("delete all mode")
+				color.Yellow("table: all in book ")
 				p.AccountID = accountID
 				d.DeleteAll()
 			default:
